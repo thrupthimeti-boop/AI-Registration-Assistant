@@ -1,0 +1,32 @@
+def get_intent(message):
+    message = message.lower()
+
+    if any(word in message for word in ["hello", "hi", "hey"]):
+        return "greeting"
+
+    if any(word in message for word in ["register", "registration", "enroll"]):
+        return "registration"
+
+    if any(word in message for word in ["eligible", "eligibility", "qualification"]):
+        return "eligibility"
+
+    if any(word in message for word in ["course", "program", "available"]):
+        return "course_information"
+
+    if any(word in message for word in ["help", "guide", "guidance"]):
+        return "guidance"
+
+    return "unknown"
+
+
+def get_response(intent):
+    responses = {
+        "greeting": "Hello! I am the AI Registration Assistant. How can I help you?",
+        "registration": "I can guide you through the course registration process.",
+        "eligibility": "I can help you check the basic eligibility requirements.",
+        "course_information": "Please tell me which course or program you are interested in.",
+        "guidance": "I can help you with registration, eligibility, and course information.",
+        "unknown": "Sorry, I didn't understand. Please ask about registration, eligibility, or courses."
+    }
+
+    return responses.get(intent, responses["unknown"])
